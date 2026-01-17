@@ -1,10 +1,11 @@
 import React from 'react'
-import ten from "../assets/topten"
-import bib from "../assets/bible"
-import sto from "../assets/sto"
-import awa from "../assets/awarwin"
+import ten from "../assets/tengi"
 import ex from "../assets/exlibris"
+import awa from "../assets/awarwin"
+
 import lib from "../assets/library"
+import bib from "../assets/bible"
+import live from "../assets/live"
 import sto from "../assets/sto"
 
 const Card = () => {
