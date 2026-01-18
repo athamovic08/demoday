@@ -1,1 +1,97 @@
 @import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  gap: 15px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.left {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.burger {
+  display: none;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.center a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.center a.active {
+  font-weight: bold;
+}
+
+.search input {
+  width: 250px;
+  padding: 6px;
+}
+
+.rayon {
+  margin-left: 20px;
+}
+
+.right {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.profile {
+  cursor: pointer;
+}
+
+/* ===== PAGES ===== */
+.page {
+  padding: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .search input {
+    width: 160px;
+  }
+}
+
+@media (max-width: 700px) {
+  .burger {
+    display: block;
+  }
+
+  .center {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: white;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .center.open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search {
+    display: none;
+  }
+}
