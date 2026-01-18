@@ -131,7 +131,6 @@ export default function Navbar() {
 
             <Link to="/profile">
               <div className="flex items-center space-x-2">
-            <span>Hi, {user.name}</span>
             <img src="/profile.png" alt="Profile" className="h-8 w-8 rounded-full"/>
           </div>
             </Link>
