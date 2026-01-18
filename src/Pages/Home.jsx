@@ -9,10 +9,13 @@ import Card from './Card'
 
 
 const Home = () => {
+
   return (
     <div>
       <Navbar/>
       <Hero/>
+      <Card/>
+      <Footer />
         <Card/><Footer />
     </div>
   )

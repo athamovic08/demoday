@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
+import { Link } from "react-router-dom";
 export default function Navbar() {
   const [user, setUser] = useState(null); // null = not logged in
-  const [showModal, setShowModal] = useState(false); // Registration modal
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
   const [language, setLanguage] = useState("Uzb");
   const [region, setRegion] = useState("Uzbekistan");
@@ -19,10 +20,15 @@ export default function Navbar() {
     "Money Investing Books",
   ];
 
-  
+  // 🔥 COMPONENT YUKLANGANDA localStorage’dan userni o‘qib olish
+  useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
 
   const handleCategoryClick = (category) => {
-    // Scroll to the section
     const id = category.replace(/\s+/g, "-").toLowerCase();
     const element = document.getElementById(id);
     if (element) {
@@ -30,12 +36,22 @@ export default function Navbar() {
     }
   };
 
-  
+  // 🔥 REGISTER → localStorage ga saqlaymiz
   const handleRegister = (e) => {
     e.preventDefault();
-    setUser({ name: formData.name });
+
+    const newUser = { name: formData.name };
+    setUser(newUser);
+    localStorage.setItem("user", JSON.stringify(newUser));
+
     setShowModal(false);
     setFormData({ name: "", email: "", password: "" });
+  };
+
+  // 🔥 LOGOUT
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem("user");
   };
 
   return (
@@ -52,19 +68,19 @@ export default function Navbar() {
         <li><a href="/about">About</a></li>
         <li><a href="/shop">Shop</a></li>
         <li><a href="/contact">Contact</a></li>
-        <li 
+
+        <li
           className="relative"
           onMouseEnter={() => setShowBooksCategories(true)}
           onMouseLeave={() => setShowBooksCategories(false)}
         >
           <a href="/books" className="hover:text-blue-600 font-semibold">Books</a>
 
-          {/* DROPDOWN */}
           {showBooksCategories && (
             <ul className="absolute top-full left-0 mt-2 w-72 bg-white border shadow-lg rounded-md z-50">
               {bookCategories.map((category) => (
-                <li 
-                  key={category} 
+                <li
+                  key={category}
                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                   onClick={() => handleCategoryClick(category)}
                 >
@@ -86,7 +102,8 @@ export default function Navbar() {
             Sign In
           </button>
         ) : (
-          <select
+          <>
+            <select
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
               className="border px-2 py-1 rounded"
@@ -95,11 +112,6 @@ export default function Navbar() {
               <option value="Rus">Rus</option>
               <option value="Eng">Eng</option>
             </select>
-        )}
-
-        {/* LANGUAGE & REGION - faqat user bo‘lsa ko‘rinadi */}
-        {user && (
-          <>
 
             <select
               value={region}
@@ -116,20 +128,28 @@ export default function Navbar() {
               <option value="Malaysia">Malaysia</option>
               <option value="Maldives">Maldives</option>
             </select>
-            
-            <div className="flex items-center space-x-2">
+
+            <Link to="/profile">
+              <div className="flex items-center space-x-2">
             <span>Hi, {user.name}</span>
             <img src="/profile.png" alt="Profile" className="h-8 w-8 rounded-full"/>
           </div>
-            
+            </Link>
+
+            <button
+              onClick={handleLogout}
+              className="text-red-500 underline ml-2"
+            >
+              Logout
+            </button>
           </>
         )}
       </div>
 
-      {/* MODAL: Registration Form */}
+      {/* MODAL */}
       {showModal && (
-        <div className="fixed inset-0 shadow-lg bg-gray-100/70 backdrop-black-sm bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white  border-[1px]   rounded-4xl p-6 w-80 relative">
+        <div className="fixed inset-0 bg-gray-100/70 flex items-center justify-center z-50">
+          <div className="bg-white border rounded-2xl p-6 w-80">
             <h2 className="text-xl font-bold mb-4">Registration</h2>
             <form onSubmit={handleRegister} className="flex flex-col space-y-3">
               <input
@@ -137,7 +157,7 @@ export default function Navbar() {
                 placeholder="Name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="border px-3 py-2 rounded-2xl w-full"
+                className="border px-3 py-2 rounded"
                 required
               />
               <input
@@ -145,7 +165,7 @@ export default function Navbar() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="border px-3 py-2 rounded-2xl w-full"
+                className="border px-3 py-2 rounded"
                 required
               />
               <input
@@ -153,16 +173,16 @@ export default function Navbar() {
                 placeholder="Password"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="border px-3 py-2 rounded-2xl w-full"
+                className="border px-3 py-2 rounded"
                 required
               />
-              <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-2xl">
+              <button type="submit" className="bg-blue-600 text-white py-2 rounded">
                 Register
               </button>
               <button
                 type="button"
                 onClick={() => setShowModal(false)}
-                className="text-gray-500 mt-2 underline"
+                className="text-gray-500 underline"
               >
                 Cancel
               </button>
@@ -170,7 +190,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-
     </nav>
   );
 }

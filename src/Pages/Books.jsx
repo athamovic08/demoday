@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../Components/Navbar'
 
-const Contact = () => {
+const Books = () => {
   return (
     <div>
       <Navbar />
@@ -9,4 +9,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default Books
