@@ -1,0 +1,85 @@
+import ten from "../assets/topten.jpg";
+import ex from "../assets/exlibris.jpg";
+import awa from "../assets/awarwin.jpg";
+import lib from "../assets/library.jpg";
+import bib from "../assets/bible.jpg";
+import sto from "../assets/sto.jpg";
+import live from "../assets/live.jpg";
+
+export const products = [
+  {
+    id: 1,
+    title: "The Top Ten Writers Pick Their Favorite Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 46707,
+    badge: "-22",
+    image: ten,
+    rating: 4.8,
+  },
+  {
+    id: 2,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 35999,
+    oldPrice: 43707,
+    badge: "-12",
+    image: ex,
+    rating: 4.5,
+  },
+  {
+    id: 3,
+    title: "52 Award-Winning Titles",
+    image: awa,
+    price: 26709,
+    oldPrice: 58707,
+    badge: "-30",
+    rating: 4.0,
+  },
+  {
+    id: 4,
+    title: "The Library of Humanity",
+    image: lib,
+    price: 75059,
+    oldPrice: 142707,
+    badge: "-59",
+    rating: 5.0,
+  },
+  {
+    id: 5,
+    title: "Lost Books of the Bible",
+    image: bib,
+    price: 80999,
+    oldPrice: 105707,
+    badge: "-15",
+    rating: 4.3,
+  },
+  {
+    id: 6,
+    title: "100 Books That Changed the World",
+    image: sto,
+    price: 46999,
+    oldPrice: 76707,
+    badge: "-36",
+    rating: 4.0,
+  },
+  {
+    id: 7,
+    title: "Remarkable Books",
+    image: live,
+    price: 40809,
+    oldPrice: 80707,
+    badge: "-40",
+    rating: 3.9,
+  },
+  {
+    id: 8,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: ex,
+    rating: 4.5,
+  },
+];
