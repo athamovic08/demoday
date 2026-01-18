@@ -11,9 +11,6 @@ const App = () => {
   return (
     <div>
       
-
-
-
       <Routes>
          <Route path='/' element={<Home/>}></Route>
          <Route path="/about" element={<About />} />
