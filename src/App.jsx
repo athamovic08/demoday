@@ -7,6 +7,8 @@ import Shop from './Pages/Shop'
 import Buy from './Pages/Buy'
 import ProductPage from './Pages/Product'
 import ProfilePage from './Components/Profile'
+import Cart from './Pages/Cart'
+
 const App = () => {
   return (
     <div>
@@ -16,7 +18,7 @@ const App = () => {
          <Route path="/about" element={<About />} />
          <Route path="/shop" element={<Shop />} />
          <Route path="/contact" element={<Contact />} />
-         <Route path='/' element={<Home/>}/>
+         <Route path='/cart' element={<Cart/>}/>
          <Route path="/product/:id" element={<ProductPage/>}/>
          <Route path="/profile" element={<ProfilePage/>}/>
          <Route path='/buy' element={<Buy/>}></Route>

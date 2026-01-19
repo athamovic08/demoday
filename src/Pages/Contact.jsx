@@ -1,11 +1,11 @@
 import React from 'react'
-import Navbar from '../Components/Navbar'
 import  { useState } from "react";
 
-      <Navbar />
+     
       
 
 export default function Contact() {
+    
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
@@ -54,7 +54,9 @@ export default function Contact() {
   }
 
   return (
+    
     <section className="bg-gradient-to-b from-sky-50 to-white py-16 px-4">
+        
       <div className="max-w-4xl mx-auto">
         <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl grid md:grid-cols-2 overflow-hidden">
           {/* Left: Info */}
@@ -263,6 +265,7 @@ export default function Contact() {
         </div>
       </div>
     </section>
+    
   );
 }
    
