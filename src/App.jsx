@@ -4,7 +4,7 @@ import Home from './Pages/Home'
 import About from './Pages/About'
 import Contact from './Pages/Contact'
 import Shop from './Pages/Shop'
-
+import Buy from './Pages/Buy'
 import ProductPage from './Pages/Product'
 import ProfilePage from './Components/Profile'
 const App = () => {
@@ -19,6 +19,7 @@ const App = () => {
          <Route path='/' element={<Home/>}/>
          <Route path="/product/:id" element={<ProductPage/>}/>
          <Route path="/profile" element={<ProfilePage/>}/>
+         <Route path='/buy' element={<Buy/>}></Route>
        
       </Routes>
     </div>

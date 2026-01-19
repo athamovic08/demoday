@@ -59,7 +59,7 @@ export default function Navbar() {
       
       {/* LEFT: LOGO */}
       <div className="flex items-center">
-        <img src="/logo.png" alt="Logo" className="h-10 w-auto"/>
+        <img src="https://cdn.vectorstock.com/i/1000v/47/16/book-shop-logo-vector-49804716.jpg" alt="Logo" className="h-10 w-auto rounded-2xl"/>
       </div>
 
       {/* CENTER: PAGES */}

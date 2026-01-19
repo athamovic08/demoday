@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { products } from "../data/products";
 import Card from "./Card";
@@ -92,10 +92,10 @@ export default function Product() {
             <button className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition">
               ADD TO CART
             </button>
-
+<Link to="/buy">
             <button className="w-full bg-yellow-400 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition">
               BUY NOW
-            </button>
+            </button></Link>
           </div>
 
           <p className="text-sm text-gray-500 flex items-center gap-2">

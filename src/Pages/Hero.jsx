@@ -1,87 +1,85 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const slides = [
+// Kitoblar data
+const books = [
   {
-    title: "BMW M5 F90",
-    desc: "600 HP · Twin-Turbo V8 · Ultimate Sport Sedan",
-    img: "/images/m5-1.png",
+    title: "Atomic Habits",
+    desc: "Yaxshi odatlarni shakllantirish va yomon odatlardan voz kechish",
+    image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f",
   },
   {
-    title: "Pure Performance",
-    desc: "0–100 km/h in 3.4 seconds",
-    img: "/images/m5-2.png",
+    title: "Rich Dad Poor Dad",
+    desc: "Moliyaviy erkinlik qo‘llanmasi",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
   },
   {
-    title: "Luxury Interior",
-    desc: "Premium leather · Digital cockpit",
-    img: "/images/m5-3.png",
+    title: "Harry Potter",
+    desc: "Sehrli va fantaziya olami",
+    image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353",
+  },
+  {
+    title: "Thinking Fast & Slow",
+    desc: "Fikrlash psixologiyasi",
+    image: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f",
   },
 ];
 
-const Hero = () => {
-  const [index, setIndex] = useState(0);
+export default function Hero() {
+  const [current, setCurrent] = useState(0);
 
+  // Auto karusel
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 3500);
-    return () => clearInterval(timer);
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % books.length);
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
 
+  const book = books[current];
+
   return (
-    <section className="w-full min-h-screen bg-black text-white flex items-center overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-10">
+    <section className="bg-blue-300 min-h-screen flex flex-col items-center justify-center px-8 text-white">
 
-        {/* LEFT — TEXT */}
-        <div className="space-y-6">
-          <span className="text-blue-500 tracking-widest uppercase">
-            BMW M Series
-          </span>
-
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-            {slides[index].title}
-          </h1>
-
-          <p className="text-gray-300 text-lg max-w-md">
-            {slides[index].desc}
-          </p>
-
-          <div className="flex gap-4 pt-4">
-            <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 transition rounded-full">
-              Explore Model
-            </button>
-            <button className="px-6 py-3 border border-white/40 hover:border-blue-500 transition rounded-full">
-              Test Drive
-            </button>
-          </div>
-
-          {/* DOTS */}
-          <div className="flex gap-3 pt-6">
-            {slides.map((_, i) => (
-              <span
-                key={i}
-                onClick={() => setIndex(i)}
-                className={`w-3 h-3 rounded-full cursor-pointer transition-all
-                ${i === index ? "bg-blue-500 scale-125" : "bg-white/30"}`}
-              ></span>
-            ))}
-          </div>
+      {/* Hero */}
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12 py-16">
+        {/* 🔹 Matn */}
+        <div className="md:w-1/2 text-center md:text-left space-y-4">
+          <h1 className="text-4xl md:text-5xl font-bold">{book.title}</h1>
+          <p className="text-lg md:text-xl text-blue-100">{book.desc}</p>
         </div>
 
-        {/* RIGHT — IMAGE */}
-        <div className="relative flex justify-center">
-          <div className="absolute w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full bg-blue-600/20 blur-3xl"></div>
+        {/* 🔹 Rasm */}
+        <div className="md:w-1/2 flex justify-center">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={book.image}
+              src={book.image}
+              alt={book.title}
+              className="w-64 md:w-96 rounded-xl shadow-2xl"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.8 }}
+            />
+          </AnimatePresence>
+        </div>
+      </div>
 
+      {/* 🔹 Pastdagi static kard */}
+      <div className="w-full max-w-4xl mt-12">
+        <div className="bg-white rounded-xl p-6 text-black shadow-lg flex items-center gap-6">
           <img
-            src={slides[index].img}
-            alt="BMW"
-            className="relative w-[320px] md:w-[520px] transition-all duration-700 hover:scale-105"
+            src={book.image}
+            alt={book.title}
+            className="h-32 w-24 rounded-lg object-cover"
           />
+          <div>
+            <h3 className="font-bold text-xl">{book.title}</h3>
+            <p className="text-gray-600">{book.desc}</p>
+          </div>
         </div>
-
       </div>
     </section>
   );
-};
-
-export default Hero;
+}
