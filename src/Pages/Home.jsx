@@ -16,7 +16,7 @@ const Home = () => {
       <Hero/>
       <Card/>
       <Footer />
-        <Card/><Footer />
+       
     </div>
   )
 }
