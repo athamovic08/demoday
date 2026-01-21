@@ -5,6 +5,7 @@ import lib from "../assets/library.jpg";
 import bib from "../assets/bible.jpg";
 import sto from "../assets/sto.jpg";
 import live from "../assets/live.jpg";
+<<<<<<< HEAD
 import fou from "../assets/4.jpg"
 import ata from "../assets/ata.jpeg"
 import atomic from "../assets/atomic.jpg"
@@ -65,6 +66,11 @@ import wind from "../assets/wind.jpeg"
 import witch from "../assets/witch.jpg"
 import ring from "../assets/ring.jpg"
 import ref from "../assets/ref.jpeg"
+=======
+import dad from "../assets/dad.jpg"
+import iq from "../assets/iq.jpg"
+import kid from "../assets/kid.jpg"
+>>>>>>> 2eb1fa58b52754d3003629a970c3782232bd43e1
 
 export const products = [
   {
@@ -142,6 +148,7 @@ export const products = [
     image: ex,
     rating: 4.5,
   },
+<<<<<<< HEAD
   {
     id: 1,
     title: "Rich Dad Poor Dad",
@@ -814,6 +821,89 @@ export const products = [
     rating: 4.8,
     badge: 25,
     image:ino ,
+=======
+
+    {
+    id: 9,
+    title: "Rich Dad Poor Dad",
+    author: "Robert Kiosaki",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: dad,
+    rating: 4.5,
+  },
+
+    {
+    id: 10,
+    title: "Rich Kid, Smart Kid",
+    author: "Robert Kiosaki",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: kid,
+    rating: 4.5,
+  },
+    {
+    id: 11,
+    title: "Up your IQ",
+    author: "Robert Kiosaki",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: iq,
+    rating: 4.5,
+  },
+    {
+    id: 12,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: ex,
+    rating: 4.5,
+  },
+    {
+    id: 13,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: lib,
+    rating: 4.5,
+  },
+    {
+    id: 14,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: sto,
+    rating: 4.5,
+  },
+    {
+    id: 15,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: ten,
+    rating: 4.5,
+  },
+    {
+    id: 16,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: ex,
+    rating: 4.5,
+>>>>>>> 2eb1fa58b52754d3003629a970c3782232bd43e1
   },
 ];
 
