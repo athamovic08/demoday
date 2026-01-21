@@ -55,9 +55,11 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex items-center justify-between px-6 py-4 bg-white shadow-md relative">
+    <nav className="flex items-center justify-between px-6 py-4 fixed-[100px] bg-white shadow-md ">
       
       {/* LEFT: LOGO */}
+      <div className="flex items-center ">
+        <img src="/logo.png" alt="Logo" className="h-10 w-auto"/>
       <div className="flex items-center">
         <img src="https://cdn.vectorstock.com/i/1000v/47/16/book-shop-logo-vector-49804716.jpg" alt="Logo" className="h-10 w-auto rounded-2xl"/>
       </div>
@@ -131,7 +133,6 @@ export default function Navbar() {
 
             <Link to="/profile">
               <div className="flex items-center space-x-2">
-            <span>Hi, {user.name}</span>
             <img src="/profile.png" alt="Profile" className="h-8 w-8 rounded-full"/>
           </div>
             </Link>
