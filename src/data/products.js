@@ -5,7 +5,6 @@ import lib from "../assets/library.jpg";
 import bib from "../assets/bible.jpg";
 import sto from "../assets/sto.jpg";
 import live from "../assets/live.jpg";
-<<<<<<< HEAD
 import fou from "../assets/4.jpg"
 import ata from "../assets/ata.jpeg"
 import atomic from "../assets/atomic.jpg"
@@ -66,11 +65,10 @@ import wind from "../assets/wind.jpeg"
 import witch from "../assets/witch.jpg"
 import ring from "../assets/ring.jpg"
 import ref from "../assets/ref.jpeg"
-=======
 import dad from "../assets/dad.jpg"
 import iq from "../assets/iq.jpg"
 import kid from "../assets/kid.jpg"
->>>>>>> 2eb1fa58b52754d3003629a970c3782232bd43e1
+
 
 export const products = [
   {
