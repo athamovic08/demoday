@@ -65,32 +65,12 @@ export default function Navbar() {
       {/* CENTER: PAGES */}
       <ul className="flex space-x-6 font-medium">
         <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/shop">Shop</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/books">Books</a></li>
+         <li><a href="/shops">Shops</a></li>
         <li><a href="/contact">Contact</a></li>
+         </ul>
 
-        <li
-          className="relative"
-          onMouseEnter={() => setShowBooksCategories(true)}
-          onMouseLeave={() => setShowBooksCategories(false)}
-        >
-          <a href="/books" className="hover:text-blue-600 font-semibold">Books</a>
-
-          {showBooksCategories && (
-            <ul className="absolute top-full left-0 mt-2 w-72 bg-white border shadow-lg rounded-md z-50">
-              {bookCategories.map((category) => (
-                <li
-                  key={category}
-                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  onClick={() => handleCategoryClick(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-      </ul>
 
       {/* RIGHT: USER */}
       <div className="flex items-center space-x-4">
@@ -131,8 +111,7 @@ export default function Navbar() {
 
             <Link to="/profile">
               <div className="flex items-center space-x-2">
-            <span>Hi, {user.name}</span>
-            <img src="/profile.png" alt="Profile" className="h-8 w-8 rounded-full"/>
+            <img src="src/assets/Sample_User_Icon.png" alt="Profile" className="h-8 w-8 rounded-full"/>
           </div>
             </Link>
 

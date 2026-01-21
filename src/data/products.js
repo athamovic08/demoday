@@ -5,6 +5,9 @@ import lib from "../assets/library.jpg";
 import bib from "../assets/bible.jpg";
 import sto from "../assets/sto.jpg";
 import live from "../assets/live.jpg";
+import dad from "../assets/dad.jpg"
+import iq from "../assets/iq.jpg"
+import kid from "../assets/kid.jpg"
 
 export const products = [
   {
@@ -74,6 +77,88 @@ export const products = [
   },
   {
     id: 8,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: ex,
+    rating: 4.5,
+  },
+
+    {
+    id: 9,
+    title: "Rich Dad Poor Dad",
+    author: "Robert Kiosaki",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: dad,
+    rating: 4.5,
+  },
+
+    {
+    id: 10,
+    title: "Rich Kid, Smart Kid",
+    author: "Robert Kiosaki",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: kid,
+    rating: 4.5,
+  },
+    {
+    id: 11,
+    title: "Up your IQ",
+    author: "Robert Kiosaki",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: iq,
+    rating: 4.5,
+  },
+    {
+    id: 12,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: ex,
+    rating: 4.5,
+  },
+    {
+    id: 13,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: lib,
+    rating: 4.5,
+  },
+    {
+    id: 14,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: sto,
+    rating: 4.5,
+  },
+    {
+    id: 15,
+    title: "Ex Libris 100+ Books",
+    author: "J. Peder Zane",
+    price: 21999,
+    oldPrice: 460707,
+    badge: "-12",
+    image: ten,
+    rating: 4.5,
+  },
+    {
+    id: 16,
     title: "Ex Libris 100+ Books",
     author: "J. Peder Zane",
     price: 21999,
