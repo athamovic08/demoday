@@ -70,7 +70,7 @@ const Card = () => {
           <Link
             key={product.id}
             to={`/product/${product.id}`}
-            className="flex flex-col items-center border rounded-2xl shadow-2xl p-4 hover:scale-105 transition"
+            className="flex flex-col items-center  rounded-2xl shadow-2xl shadow-blue-500 p-4 hover:scale-105 transition"
           >
             {/* BADGE */}
             <div className="bg-red-600 text-white px-4 py-1 rounded-full mb-3">
