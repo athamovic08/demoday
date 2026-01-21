@@ -146,7 +146,7 @@ export const products = [
     image: ex,
     rating: 4.5,
   },
-<<<<<<< HEAD
+
   {
     id: 1,
     title: "Rich Dad Poor Dad",
@@ -818,8 +818,7 @@ export const products = [
     oldPrice: 195000,
     rating: 4.8,
     badge: 25,
-    image:ino ,
-=======
+    image:ino },
 
     {
     id: 9,
@@ -901,7 +900,7 @@ export const products = [
     badge: "-12",
     image: ex,
     rating: 4.5,
->>>>>>> 2eb1fa58b52754d3003629a970c3782232bd43e1
+
   },
 ];
 
