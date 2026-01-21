@@ -1,7 +1,7 @@
 import React from 'react'
 import  { useState } from "react";
-
-     
+import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
       
 
 export default function Contact() {
@@ -55,9 +55,9 @@ export default function Contact() {
 
   return (
     
-    <section className="bg-gradient-to-b from-sky-50 to-white py-16 px-4">
-        
-      <div className="max-w-4xl mx-auto">
+    <section className="gap-10">
+        <Navbar />
+      <div className="max-w-4xl mx-auto mt-15 rounded-[20px] border-blue-950 hover:bg-blue-950">
         <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl grid md:grid-cols-2 overflow-hidden">
           {/* Left: Info */}
           <div className="p-8 md:p-10 bg-gradient-to-tr from-sky-50/60 to-white border-r md:border-r md:border-transparent flex flex-col">
@@ -264,6 +264,7 @@ export default function Contact() {
           </form>
         </div>
       </div>
+      <Footer />
     </section>
     
   );
