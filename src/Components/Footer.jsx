@@ -43,14 +43,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer-bottom">
-        <span>© 2026 Ubuy Clone. All rights reserved.</span>
-        <div className="footer-payments">
-          <span>💳</span>
-          <span>💳</span>
-          <span>💳</span>
-        </div>
-      </div>
+      
     </footer>
   );
 };
