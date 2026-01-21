@@ -1,14 +1,18 @@
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 export default function Buy() {
   const { state } = useLocation();
 
-  if (!state?.product) {
+  const saved = JSON.parse(localStorage.getItem("buyProduct"));
+
+  const product = state?.product || saved?.product;
+  const qty = state?.qty || saved?.qty;
+
+  if (!product) {
     return <h2 className="p-6">No product selected</h2>;
   }
 
-  const { product, qty } = state;
   const totalPrice = product.price * qty;
 
   const [form, setForm] = useState({
@@ -23,44 +27,38 @@ export default function Buy() {
 
   const handleSubmit = e => {
     e.preventDefault();
+
     alert("Buyurtma qabul qilindi ✅");
+
+    localStorage.removeItem("buyProduct");
+
+    setForm({
+      name: "",
+      phone: "",
+      address: "",
+    });
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-10">
-      {/* PRODUCT INFO */}
+    <div className="max-w-5xl mx-auto p-6 grid md:grid-cols-2 gap-10">
+      {/* PRODUCT */}
       <div className="space-y-4">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="w-[300px] rounded-xl shadow-lg"
-        />
-
-        <h1 className="text-2xl font-semibold">{product.title}</h1>
-        <p className="text-gray-500">{product.author}</p>
-
-        <div className="text-lg">
-          ⭐ {product.rating} rating
-        </div>
-
-        <p>
-          Quantity: <b>{qty}</b>
-        </p>
-
+        <img src={product.image} className="w-64 rounded-xl" />
+        <h1 className="text-2xl font-bold">{product.title}</h1>
+        <p>Quantity: <b>{qty}</b></p>
         <p className="text-2xl font-bold">
           UZS {totalPrice.toLocaleString()}
         </p>
       </div>
 
-      {/* BUY FORM */}
+      {/* FORM */}
       <form
         onSubmit={handleSubmit}
-        className="border rounded-xl p-6 space-y-4 shadow-lg"
+        className="border p-6 rounded-xl space-y-4"
       >
         <h2 className="text-xl font-semibold">Sotib olish</h2>
 
         <input
-          type="text"
           name="name"
           placeholder="Ismingiz"
           value={form.name}
@@ -70,7 +68,6 @@ export default function Buy() {
         />
 
         <input
-          type="tel"
           name="phone"
           placeholder="Telefon raqam"
           value={form.phone}
@@ -87,13 +84,10 @@ export default function Buy() {
           required
           className="w-full border px-4 py-2 rounded-lg"
         />
-
-        <button
-          type="submit"
-          className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition"
-        >
+<Link to="/">
+        <button className="w-full bg-black text-white py-3 rounded-lg">
           BUYURTMA BERISH
-        </button>
+        </button></Link>
       </form>
     </div>
   );

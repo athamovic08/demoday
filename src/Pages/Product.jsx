@@ -3,7 +3,8 @@ import { useState } from "react";
 import { products } from "../data/products";
 import Card from "./Card";
 import { useCart } from "./CartContex";
-
+import Navbar from "../Components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function Product() {
   const { id } = useParams();
@@ -11,7 +12,19 @@ export default function Product() {
 
   const [qty, setQty] = useState(1);
   const { addToCart } = useCart(); // ✅ QO‘SHILDI
+  const navigate = useNavigate();
 
+
+  const handleBuy = () => {
+    const data = { product, qty };
+
+    localStorage.setItem("buyProduct", JSON.stringify(data));
+
+    navigate("/buy", {
+      state: data,
+    });
+  };
+  
   if (!product) {
     return <h2 className="p-6">Product not found</h2>;
   }
@@ -20,7 +33,8 @@ export default function Product() {
   const totalOldPrice = product.oldPrice * qty;
 
   return (
-    <div>
+   
+    <div> <Navbar />
       <div className="max-w-6xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* IMAGE */}
         <div className="flex justify-center">
@@ -93,7 +107,7 @@ export default function Product() {
               </button>
             </div>
           </div>
-
+<div className="flex flex-col gap-5">
           {/* BUTTONS */}
           <Link to="/cart">
           <button
@@ -104,11 +118,11 @@ export default function Product() {
           </button></Link>
 
           <Link to="/buy">
-            <button className="w-full bg-yellow-400 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition">
+            <button onClick={handleBuy} className="w-full bg-yellow-400 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition">
               BUY NOW
             </button>
           </Link>
-
+</div>
           <p className="text-sm text-gray-500 flex items-center gap-2">
             🔒 Secured transaction
           </p>

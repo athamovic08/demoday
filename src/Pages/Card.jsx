@@ -15,16 +15,27 @@ const Card = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("All");
 
+  // 🔍 FILTER
   const filteredProducts = products.filter(p => {
+    const searchText = search.toLowerCase().trim();
+
     const searchMatch =
-      p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.author.toLowerCase().includes(search.toLowerCase());
+      p.title.toLowerCase().includes(searchText) ||
+      p.author.toLowerCase().includes(searchText);
 
     const categoryMatch =
       category === "All" || p.category === category;
 
     return searchMatch && categoryMatch;
   });
+
+  // 👀 QANCHA KO‘RSATILADI
+  const visibleProducts =
+    search.length > 0
+      ? filteredProducts
+      : category === "All"
+      ? filteredProducts
+      : filteredProducts.slice(0, 12);
 
   return (
     <div className="pb-20">
@@ -44,13 +55,16 @@ const Card = () => {
         />
       </div>
 
-      {/* MARQUEE CATEGORY */}
-      <div className="overflow-hidden mt-6 relative">
+      {/* CATEGORY */}
+      <div className="overflow-hidden mt-6">
         <div className="marquee flex gap-4 whitespace-nowrap">
           {[...categories, ...categories].map((cat, i) => (
             <button
               key={i}
-              onClick={() => setCategory(cat)}
+              onClick={() => {
+                setCategory(cat);
+                setSearch("");
+              }}
               className={`px-6 py-2 rounded-full border transition
                 ${
                   category === cat
@@ -64,13 +78,20 @@ const Card = () => {
         </div>
       </div>
 
+      {/* NO RESULT */}
+      {visibleProducts.length === 0 && (
+        <p className="text-center text-gray-500 mt-10">
+          Hech narsa topilmadi 😕
+        </p>
+      )}
+
       {/* CARDS */}
       <div className="grid grid-cols-4 gap-6 mt-14 px-10">
-        {filteredProducts.map(product => (
+        {visibleProducts.map(product => (
           <Link
             key={product.id}
             to={`/product/${product.id}`}
-            className="flex flex-col items-center  rounded-2xl shadow-2xl shadow-blue-500 p-4 hover:scale-105 transition"
+            className="flex flex-col items-center rounded-2xl shadow-xl p-4 hover:scale-105 transition"
           >
             {/* BADGE */}
             <div className="bg-red-600 text-white px-4 py-1 rounded-full mb-3">
@@ -104,18 +125,14 @@ const Card = () => {
         ))}
       </div>
 
-      {/* CSS – HAMMASI SHU YERDA */}
+      {/* MARQUEE CSS */}
       <style>{`
         .marquee {
           animation: marquee 15s linear infinite;
         }
         @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
       `}</style>
     </div>
