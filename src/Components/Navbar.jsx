@@ -1,179 +1,59 @@
 import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import { Link } from "react-router-dom";
 export default function Navbar() {
-  const [user, setUser] = useState(null); // null = not logged in
-  const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
-  const [language, setLanguage] = useState("Uzb");
-  const [region, setRegion] = useState("Uzbekistan");
-  const [showBooksCategories, setShowBooksCategories] = useState(false);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
-  const bookCategories = [
-    "Logic",
-    "Psychology",
-    "Historic",
-    "Books to Read",
-    "Children Biography Books",
-    "Children Transportation Books",
-    "Fantasy Books",
-    "Money Investing Books",
-  ];
-
-  // 🔥 COMPONENT YUKLANGANDA localStorage’dan userni o‘qib olish
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
-    if (savedUser) {
-      setUser(JSON.parse(savedUser));
-    }
+    if (savedUser) setUser(JSON.parse(savedUser));
   }, []);
 
-  const handleCategoryClick = (category) => {
-    const id = category.replace(/\s+/g, "-").toLowerCase();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  // 🔥 REGISTER → localStorage ga saqlaymiz
-  const handleRegister = (e) => {
-    e.preventDefault();
-
-    const newUser = { name: formData.name };
-    setUser(newUser);
-    localStorage.setItem("user", JSON.stringify(newUser));
-
-    setShowModal(false);
-    setFormData({ name: "", email: "", password: "" });
-  };
-
-  // 🔥 LOGOUT
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem("user");
+    navigate("/");
   };
 
   return (
-    <nav className="flex items-center justify-between px-6 py-4 fixed-[100px] bg-white shadow-md ">
-      
-      {/* LEFT: LOGO */}
-      
-      <div className="flex items-center">
-        <img src="https://cdn.vectorstock.com/i/1000v/47/16/book-shop-logo-vector-49804716.jpg" alt="Logo" className="h-10 w-auto rounded-2xl"/>
+    <nav className="w-full h-[70px] px-6 bg-white flex items-center justify-between border-b border-gray-200 fixed top-0 left-0 z-[1000]">
+      {/* LEFT: LOGO + SITE NAME */}
+      <div className="flex items-center gap-4">
+        <img
+          src="https://cdn.vectorstock.com/i/1000v/47/16/book-shop-logo-vector-49804716.jpg"
+          alt="Logo"
+          className="h-10 w-auto rounded-2xl"
+        />
+        <span className="font-bold text-xl">BookStore</span>
       </div>
 
-      {/* CENTER: PAGES */}
+      {/* CENTER: LINKS */}
       <ul className="flex space-x-6 font-medium">
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/books">Books</a></li>
-         <li><a href="/shop">Shops</a></li>
-        <li><a href="/contact">Contact</a></li>
-         </ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About Us</Link></li>
+        <li><Link to="/books">Books</Link></li>
+        <li><Link to="/shop">Shop</Link></li>
+        <li><Link to="/contact">Contact</Link></li>
+      </ul>
 
-
-      {/* RIGHT: USER */}
+      {/* RIGHT: SIGNUP / PROFILE */}
       <div className="flex items-center space-x-4">
         {!user ? (
           <button
-            onClick={() => setShowModal(true)}
+            onClick={() => navigate("/signup")}
             className="px-4 py-2 bg-blue-600 text-white rounded"
           >
-            Sign In
+            Sign Up
           </button>
         ) : (
-          <>
-            <select
-              value={language}
-              onChange={(e) => setLanguage(e.target.value)}
-              className="border px-2 py-1 rounded"
-            >
-              <option value="Uzb">Uzb</option>
-              <option value="Rus">Rus</option>
-              <option value="Eng">Eng</option>
-            </select>
-
-            <select
-              value={region}
-              onChange={(e) => setRegion(e.target.value)}
-              className="border px-2 py-1 rounded"
-            >
-              <option value="Uzbekistan">Uzbekistan</option>
-              <option value="Russia">Russia</option>
-              <option value="France">France</option>
-              <option value="Hong Kong">Hong Kong</option>
-              <option value="India">India</option>
-              <option value="Indonesia">Indonesia</option>
-              <option value="Japan">Japan</option>
-              <option value="Malaysia">Malaysia</option>
-              <option value="Maldives">Maldives</option>
-            </select>
-
-            <Link to="/profile">
-              <div className="flex items-center space-x-2">
-
-            <img src="src/assets/Sample_User_Icon.png" alt="Profile" className="h-8 w-8 rounded-full"/>
-
-            <img src="/profile.png" alt="Profile" className="h-8 w-8 rounded-full"/>
-
-          </div>
-            </Link>
-
-            <button
-              onClick={handleLogout}
-              className="text-red-500 underline ml-2"
-            >
-              Logout
+          <Link to="/profile">
+            <button className="px-4 py-2 bg-green-600 text-white rounded">
+              Profile
             </button>
-          </>
+          </Link>
         )}
       </div>
-
-      {/* MODAL */}
-      {showModal && (
-        <div className="fixed inset-0 bg-gray-100/70 flex items-center justify-center z-50">
-          <div className="bg-white border rounded-2xl p-6 w-80">
-            <h2 className="text-xl font-bold mb-4">Registration</h2>
-            <form onSubmit={handleRegister} className="flex flex-col space-y-3">
-              <input
-                type="text"
-                placeholder="Name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="border px-3 py-2 rounded"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="border px-3 py-2 rounded"
-                required
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="border px-3 py-2 rounded"
-                required
-              />
-              <button type="submit" className="bg-blue-600 text-white py-2 rounded">
-                Register
-              </button>
-              <button
-                type="button"
-                onClick={() => setShowModal(false)}
-                className="text-gray-500 underline"
-              >
-                Cancel
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
     </nav>
   );
 }
