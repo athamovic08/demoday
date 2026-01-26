@@ -21,7 +21,7 @@ export default function Navbar() {
       {/* LEFT: LOGO + SITE NAME */}
       <div className="flex items-center gap-4">
         <img
-          src="https://cdn.vectorstock.com/i/1000v/47/16/book-shop-logo-vector-49804716.jpg"
+          src="https://img.freepik.com/free-vector/book-logo-template_23-2149676815.jpg?semt=ais_hybrid&w=740&q=80"
           alt="Logo"
           className="h-10 w-auto rounded-2xl"
         />

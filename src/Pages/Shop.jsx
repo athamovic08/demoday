@@ -11,7 +11,8 @@ import Shop6 from "../assets/shop(6).jpeg";
 import Shop7 from "../assets/shop(7).jpeg";
 import Shop8 from "../assets/shop(8).jpeg";
 import Shop9 from "../assets/shop(9).jpeg";
-
+import { Link } from "react-router-dom";
+Link
 const Shop = () => {
   const shops = [
     { id: 1, image: Shop1, name: "Central Book Store", location: "Tashkent, Chilanzar", rating: 4.8, books: 1200, discount: "-20%" },
@@ -71,9 +72,9 @@ const Shop = () => {
                 </p>
 
                 <div className="flex flex-col gap-4 max-w-md">
-                  <button className="bg-black text-white py-4 rounded-lg font-semibold">
-                    ENTER SHOP
-                  </button>
+                  <Link to="/books" className="bg-black text-white py-4 rounded-lg flex justify-center items-center"><button className="bg-black text-white flex justify-center items-center rounded-lg font-semibold">
+                    See books
+                  </button></Link>
                   <button className="bg-yellow-400 py-4 rounded-lg font-semibold">
                     CONTACT SHOP
                   </button>
